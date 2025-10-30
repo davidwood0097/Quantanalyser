@@ -10,16 +10,17 @@ st.set_page_config(page_title="Axcendia FX Macro Dashboard", layout="wide")
 st.title("💹 Axcendia FX Macro Dashboard")
 
 # ─────────────────────────────────────────────
-#  GOOGLE SHEETS CONNECTION
+#  GOOGLE SHEETS CONNECTION (using Streamlit Secrets)
 # ─────────────────────────────────────────────
 try:
     SCOPE = ["https://www.googleapis.com/auth/spreadsheets"]
-    CREDS = Credentials.from_service_account_file("service_account.json", scopes=SCOPE)
+    creds_json = st.secrets["gcp_service_account"]
+    CREDS = Credentials.from_service_account_info(creds_json, scopes=SCOPE)
     CLIENT = gspread.authorize(CREDS)
     SHEET_URL = "https://docs.google.com/spreadsheets/d/17fNArRGZNbmRhTq_jPR7zab6O6-Edr5_IYzT5l1tZUE/edit"
     SHEET = CLIENT.open_by_url(SHEET_URL).sheet1
 except Exception as e:
-    st.error("❌ Could not connect to Google Sheets. Please check permissions and credentials.")
+    st.error(f"❌ Could not connect to Google Sheets. Please check permissions and secrets setup.\n\nError: {e}")
     st.stop()
 
 # ─────────────────────────────────────────────
@@ -36,7 +37,7 @@ def load_data():
             ]
         )
     except Exception as e:
-        st.error("⚠️ Unable to load data from Google Sheets. Check API permissions.")
+        st.error(f"⚠️ Unable to load data from Google Sheets: {e}")
         st.stop()
 
 def save_data(df):
@@ -44,7 +45,7 @@ def save_data(df):
         SHEET.clear()
         SHEET.update([df.columns.values.tolist()] + df.values.tolist())
     except Exception as e:
-        st.error("⚠️ Unable to save data to Google Sheets. Check write permissions.")
+        st.error(f"⚠️ Unable to save data to Google Sheets: {e}")
         st.stop()
 
 # Load the current data
@@ -108,3 +109,4 @@ else:
     st.metric("Average Confidence", f"{round(avg_conf, 1)}%")
 
 st.caption("🔄 Synced live with Google Sheets — updates appear instantly.")
+
