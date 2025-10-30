@@ -1,10 +1,10 @@
 import streamlit as st
 import pandas as pd
 import gspread
-import json
+import json, base64
 from google.oauth2.service_account import Credentials
 
-# Page setup
+# ---- PAGE CONFIG ----
 st.set_page_config(page_title="Quantanalyser Dashboard", layout="wide")
 
 # ---- AUTHENTICATION ----
@@ -12,13 +12,17 @@ CREDENTIALS_FILE = "service_account.json"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
 def load_credentials():
-    """Safely load and re-encode service account key to handle hidden line breaks."""
-    with open(CREDENTIALS_FILE, "r") as f:
-        creds_json = json.load(f)
-    # Clean key for invalid padding / control characters
-    key = creds_json["private_key"].replace("\r", "").replace("\n", "\\n")
-    creds_json["private_key"] = key
-    return Credentials.from_service_account_info(creds_json, scopes=SCOPES)
+    """Load service account and fix any newline/padding issues in private_key."""
+    with open(CREDENTIALS_FILE, "r", encoding="utf-8") as f:
+        creds_dict = json.load(f)
+    key = creds_dict["private_key"]
+
+    # Handle both literal \n and true newlines
+    if "-----BEGIN PRIVATE KEY-----" in key and "\n" in key:
+        key = key.replace("\r", "").replace("\n", "\\n")
+    creds_dict["private_key"] = key
+
+    return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 
 try:
     creds = load_credentials()
@@ -65,4 +69,6 @@ else:
 
 st.sidebar.markdown("---")
 st.sidebar.info("✅ Connected to Google Sheets successfully. Data auto-refreshes every 60 seconds.")
+
+
 
