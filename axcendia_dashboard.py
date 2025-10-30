@@ -8,24 +8,13 @@ from google.oauth2.service_account import Credentials
 st.set_page_config(page_title="Quantanalyser Dashboard", layout="wide")
 
 # ---- AUTHENTICATION ----
-CREDENTIALS_FILE = "service_account.json"
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-
-def load_credentials():
-    """Load service account and fix any newline/padding issues in private_key."""
-    with open(CREDENTIALS_FILE, "r", encoding="utf-8") as f:
-        creds_dict = json.load(f)
-    key = creds_dict["private_key"]
-
-    # Handle both literal \n and true newlines
-    if "-----BEGIN PRIVATE KEY-----" in key and "\n" in key:
-        key = key.replace("\r", "").replace("\n", "\\n")
-    creds_dict["private_key"] = key
-
-    return Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
-
 try:
-    creds = load_credentials()
+    encoded_key = st.secrets["gcp_service_account"]["encoded_key"]
+    decoded = base64.b64decode(encoded_key).decode("utf-8")
+    creds_json = json.loads(decoded)
+
+    SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+    creds = Credentials.from_service_account_info(creds_json, scopes=SCOPES)
     client = gspread.authorize(creds)
     SHEET = client.open_by_url(
         "https://docs.google.com/spreadsheets/d/17fNArRGZNbmRhTq_jPR7zab6O6-Edr5_IYzT5l1tZUE/edit#gid=0"
@@ -69,6 +58,8 @@ else:
 
 st.sidebar.markdown("---")
 st.sidebar.info("✅ Connected to Google Sheets successfully. Data auto-refreshes every 60 seconds.")
+
+
 
 
 
