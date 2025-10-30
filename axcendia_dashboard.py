@@ -10,9 +10,7 @@ SCOPE = ["https://www.googleapis.com/auth/spreadsheets"]
 CREDS = Credentials.from_service_account_file("service_account.json", scopes=SCOPE)
 CLIENT = gspread.authorize(CREDS)
 
-# Replace this with your own Google Sheet URL
-SHEET_URL = "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit"
-SHEET = CLIENT.open_by_url(SHEET_URL).sheet1
+SHEET_URL = "https://docs.google.com/spreadsheets/d/17fNArRGZNbmRhTq_jPR7zab6O6-Edr5_IYzT5l1tZUE/edit"
 
 # ─────────────────────────────────────────────
 #  Streamlit page config
@@ -81,3 +79,4 @@ if not df.empty:
     avg_conf = df["Confidence"].mean()
     st.metric("Average Bias", round(avg_bias, 2))
     st.metric("Average Confidence", f"{round(avg_conf, 1)}%")
+
