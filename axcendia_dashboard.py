@@ -1,20 +1,31 @@
 import streamlit as st
 import pandas as pd
 import gspread
+import json
 from google.oauth2.service_account import Credentials
 
 # Page setup
 st.set_page_config(page_title="Quantanalyser Dashboard", layout="wide")
 
 # ---- AUTHENTICATION ----
-# Load credentials from JSON file in the repo
 CREDENTIALS_FILE = "service_account.json"
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 
+def load_credentials():
+    """Safely load and re-encode service account key to handle hidden line breaks."""
+    with open(CREDENTIALS_FILE, "r") as f:
+        creds_json = json.load(f)
+    # Clean key for invalid padding / control characters
+    key = creds_json["private_key"].replace("\r", "").replace("\n", "\\n")
+    creds_json["private_key"] = key
+    return Credentials.from_service_account_info(creds_json, scopes=SCOPES)
+
 try:
-    creds = Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=SCOPES)
+    creds = load_credentials()
     client = gspread.authorize(creds)
-    SHEET = client.open_by_url("https://docs.google.com/spreadsheets/d/17fNArRGZNbmRhTq_jPR7zab6O6-Edr5_IYzT5l1tZUE/edit#gid=0").sheet1
+    SHEET = client.open_by_url(
+        "https://docs.google.com/spreadsheets/d/17fNArRGZNbmRhTq_jPR7zab6O6-Edr5_IYzT5l1tZUE/edit#gid=0"
+    ).sheet1
 except Exception as e:
     st.error(f"❌ Could not connect to Google Sheets.\n\nError: {e}")
     st.stop()
@@ -54,3 +65,4 @@ else:
 
 st.sidebar.markdown("---")
 st.sidebar.info("✅ Connected to Google Sheets successfully. Data auto-refreshes every 60 seconds.")
+
