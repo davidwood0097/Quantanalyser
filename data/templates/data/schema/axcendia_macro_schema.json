@@ -1,0 +1,80 @@
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Axcendia Macro Module",
+  "type": "object",
+  "properties": {
+    "entity": {"type": "string"},
+    "category": {"type": "string"},
+    "last_updated": {"type": "string", "format": "date-time"},
+    "layout_version": {"type": "string"},
+    "sections": {
+      "type": "object",
+      "properties": {
+        "policy_summary": {"type": "string"},
+        "inflation_growth": {"type": "string"},
+        "political_fiscal": {"type": "string"},
+        "positioning_overview": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "instrument": {"type": "string"},
+              "recent_level": {"type": "string"},
+              "bias": {"type": "string"},
+              "notes": {"type": "string"}
+            },
+            "required": ["instrument","bias"]
+          }
+        },
+        "trading_implications": {
+          "type": "object",
+          "properties": {
+            "scenarios": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {"type": "string"},
+                  "probability": {"type": "number"},
+                  "narrative": {"type": "string"},
+                  "positions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "instrument": {"type": "string"},
+                        "bias": {"type": "string"},
+                        "entry": {"type": "string"},
+                        "target": {"type": "string"},
+                        "stop": {"type": "string"}
+                      },
+                      "required": ["instrument","bias","target","stop"]
+                    }
+                  }
+                },
+                "required": ["name","probability","narrative","positions"]
+              }
+            }
+          },
+          "required": ["scenarios"]
+        },
+        "summary_table": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "scenario": {"type": "string"},
+              "probability": {"type": "string"},
+              "bias": {"type": "string"},
+              "trade_plan": {"type": "string"},
+              "target_window": {"type": "string"},
+              "key_drivers": {"type": "string"}
+            },
+            "required": ["scenario","probability","bias"]
+          }
+        },
+        "tactical_notes": {"type": "array","items":{"type":"string"}}
+      },
+      "required": ["policy_summary","inflation_growth","political_fiscal","positioning_overview","trading_implications","summary_table","tactical_notes"]
+    }
+  },
+  "required": ["entity","category","last_updated","layout_version","sections"]
