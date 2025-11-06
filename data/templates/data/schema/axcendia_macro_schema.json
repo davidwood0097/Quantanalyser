@@ -1,3 +1,4 @@
+{
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Axcendia Macro Module",
   "type": "object",
@@ -78,3 +79,4 @@
     }
   },
   "required": ["entity","category","last_updated","layout_version","sections"]
+}
