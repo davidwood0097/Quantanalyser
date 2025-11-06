@@ -158,14 +158,52 @@ def main():
     # Diff summary for selected entity
     if latest_changes:
         st.markdown("## Δ Changes Since Yesterday")
+          # ==============================================================
+    # Δ Changes Since Yesterday (Color-coded + Commentary)
+    # ==============================================================
+
+    if latest_changes:
+        st.markdown("## Δ Changes Since Yesterday")
+
         for a in latest_changes.get("assets", []):
             if a["entity"] == entity:
-                for d in a.get("diffs", []):
-                    st.write(f"{d['tag']} {d['field']}: {d['dir']} {d['magnitude']} — {d['comment']}")
-                st.write(f"**Market Impact:** {a.get('market_impact', '—')}")
-                st.write(f"**Positioning:** {a.get('positioning_implication', '—')}")
+                diffs = a.get("diffs", [])
+                if not diffs:
+                    st.info("No major changes for this asset today.")
+                    continue
+
+                for d in diffs:
+                    color = "⚪"
+                    if "↑" in d["dir"] or "🟢" in d.get("tag", ""):
+                        color = "🟢"
+                    elif "↓" in d["dir"] or "🔴" in d.get("tag", ""):
+                        color = "🔴"
+
+                    st.markdown(
+                        f"""
+                        <div style='border:1px solid #333;padding:8px;border-radius:8px;
+                        margin-bottom:6px;background-color:#f8f9fa'>
+                        <b>{color} {d['field']}</b><br>
+                        <span style='font-size:0.9em;'>{d['comment']}</span><br>
+                        <span style='color:gray;font-size:0.85em;'>
+                        Δ {d['dir']} {d['magnitude']} | {d.get('context','')}
+                        </span>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                # Market and positioning impact
+                st.markdown(
+                    f"**Market Impact:** {a.get('market_impact', '—')}"
+                )
+                st.markdown(
+                    f"**Quant Desk View:** {a.get('positioning_implication', '—')}"
+                )
+
+                st.divider()
                 break
-        st.divider()
+
 
     # Render the module
     render_module(module)
@@ -183,5 +221,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
