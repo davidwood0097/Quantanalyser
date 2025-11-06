@@ -1,0 +1,99 @@
+[
+  {
+    "entity": "JPY",
+    "category": "FX",
+    "last_updated": "2025-11-06T00:00:00Z",
+    "layout_version": "1.0",
+    "sections": {
+      "policy_summary": "BoJ held at 0.50% (7–2 vote), hawkish dissent by Takata/Tamura. Inflation forecasts revised up; risks now 'roughly balanced'. Markets price ~45–50% chance of a 25bp December hike to 0.75%; gradual normalization remains base case.",
+      "inflation_growth": "Core inflation ~2.7–3.0% and wage-driven. Tokyo CPI Oct 2.8% YoY. FY25 GDP nudged to 0.7%. Subsidies dampen headline but underlying pressure remains firm.",
+      "political_fiscal": "PM Takaichi fiscally expansionary (yen-negative tilt). Energy support and possible tax relief could soften headline CPI near-term; BoJ remains cautious of FX volatility.",
+      "positioning_overview": [
+        {"instrument":"USDJPY","recent_level":"~150–151","bias":"Neutral–Bullish","notes":"Carry support; MoF watch 158–160."},
+        {"instrument":"EURJPY","recent_level":"~160–161","bias":"Neutral","notes":"ECB pause; range with mild downside on BoJ hawkishness."},
+        {"instrument":"GBPJPY","recent_level":"~191–192","bias":"Bullish","notes":"UK yield premium; vulnerable to MoF/BoJ."},
+        {"instrument":"AUDJPY","recent_level":"~97–98","bias":"Bullish","notes":"Carry-led; RBA tilt supportive."},
+        {"instrument":"NZDJPY","recent_level":"~91–92","bias":"Mildly Bullish","notes":"Yield spread still attractive."},
+        {"instrument":"CADJPY","recent_level":"~108–109","bias":"Neutral","notes":"Oil supportive; BoC softer tone."},
+        {"instrument":"CHFJPY","recent_level":"~169–170","bias":"Neutral–Bearish","notes":"Low-yield pair; sensitive to BoJ surprise."},
+        {"instrument":"ZARJPY","recent_level":"~7.9–8.0","bias":"Bullish (High Beta)","notes":"Carry + EM risk appetite; higher vol."}
+      ],
+      "trading_implications": {
+        "scenarios": [
+          {
+            "name": "Base Case – BoJ hold, USD firm",
+            "probability": 0.60,
+            "narrative": "Carry-positive backdrop; USDJPY 150–155 range with topside tests; crosses bid on dips.",
+            "positions": [
+              {"instrument":"USDJPY","bias":"Long","entry":"Dips 150–151","target":"154.5–155.0","stop":"149.5"},
+              {"instrument":"EURJPY","bias":"Long","entry":"On pullbacks","target":"162.5","stop":"158.0"},
+              {"instrument":"GBPJPY","bias":"Long","entry":"On pullbacks","target":"193.5","stop":"189.5"},
+              {"instrument":"AUDJPY","bias":"Long","entry":"On pullbacks","target":"99.0","stop":"96.0"},
+              {"instrument":"NZDJPY","bias":"Long","entry":"On pullbacks","target":"93.0","stop":"90.5"},
+              {"instrument":"CADJPY","bias":"Range","entry":"Buy 108 / Sell 111","target":"111.0","stop":"107.0"},
+              {"instrument":"CHFJPY","bias":"Neutral","entry":"N/A","target":"170.5","stop":"168.0"},
+              {"instrument":"ZARJPY","bias":"Long","entry":"On pullbacks","target":"8.20","stop":"7.75"}
+            ]
+          },
+          {
+            "name": "Bullish JPY – Hawkish BoJ/Data",
+            "probability": 0.25,
+            "narrative": "Tokyo CPI/wages surprise; hawkish signals; near-term JPY short-covering.",
+            "positions": [
+              {"instrument":"USDJPY","bias":"Short","entry":"Rallies >154","target":"148.5","stop":"156.0"},
+              {"instrument":"EURJPY","bias":"Short","entry":"Rallies","target":"158.5","stop":"162.5"},
+              {"instrument":"GBPJPY","bias":"Short","entry":"Rallies","target":"189.0","stop":"194.5"},
+              {"instrument":"AUDJPY","bias":"Short","entry":"Rallies","target":"96.0","stop":"99.0"},
+              {"instrument":"NZDJPY","bias":"Short","entry":"Rallies","target":"89.5","stop":"92.5"},
+              {"instrument":"CADJPY","bias":"Short","entry":"Rallies","target":"106.5","stop":"110.5"},
+              {"instrument":"CHFJPY","bias":"Short","entry":"Rallies","target":"167.0","stop":"170.0"},
+              {"instrument":"ZARJPY","bias":"Short","entry":"Rallies","target":"7.60","stop":"8.10"}
+            ]
+          },
+          {
+            "name": "Bearish JPY – BoJ delay + strong US",
+            "probability": 0.15,
+            "narrative": "BoJ defers; US data beats; USDJPY spikes toward intervention band 158–160.",
+            "positions": [
+              {"instrument":"USDJPY","bias":"Short (fade)","entry":"158.5–159.5","target":"153.5–154.0","stop":"160.5"},
+              {"instrument":"EURJPY","bias":"Short (fade)","entry":"~164","target":"160.0","stop":"166.0"},
+              {"instrument":"GBPJPY","bias":"Short (fade)","entry":"~196","target":"191.5","stop":"198.5"},
+              {"instrument":"AUDJPY","bias":"Short (fade)","entry":"~100","target":"97.5","stop":"102.0"},
+              {"instrument":"ZARJPY","bias":"Short (fade)","entry":"~8.30","target":"8.00","stop":"8.60"}
+            ]
+          }
+        ]
+      },
+      "summary_table": [
+        {"scenario":"Base Case – Hold, USD firm","probability":"60%","bias":"Long JPY crosses","trade_plan":"Buy dips; manage 155–158 risk","target_window":"USDJPY 155 / AUDJPY 99 / GBPJPY 193","key_drivers":"Fed steady; BoJ cautious"},
+        {"scenario":"Bullish JPY – Hawkish BoJ","probability":"25%","bias":"Short JPY crosses","trade_plan":"Sell rallies into data strength","target_window":"USDJPY 148 / EURJPY 158","key_drivers":"Tokyo CPI, wages, Ueda tone"},
+        {"scenario":"Bearish JPY – Delay + Strong US","probability":"15%","bias":"Fade extremes","trade_plan":"Short near 158–160 on intervention risk","target_window":"USDJPY 153–154","key_drivers":"US CPI/NFP beat; BoJ delay"}
+      ],
+      "tactical_notes": [
+        "Watch MoF rhetoric and 155–160 zone for intervention risk.",
+        "Key catalysts: Tokyo CPI, wage prints, BoJ speeches, US CPI/NFP, risk sentiment.",
+        "Carry remains supportive; be ready to pivot short into a confirmed December hike setup."
+      ]
+    }
+  },
+  {"entity":"USD","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"EUR","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"GBP","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"AUD","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"NZD","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"CAD","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"CHF","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"SEK","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"NOK","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"ZAR","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"MXN","category":"FX","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"S&P 500","category":"Index","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"NASDAQ 100","category":"Index","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Nikkei 225","category":"Index","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Euro Stoxx 50","category":"Index","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Gold","category":"Commodity","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Silver","category":"Commodity","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"WTI Crude","category":"Commodity","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Bitcoin","category":"Crypto","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}},
+  {"entity":"Ethereum","category":"Crypto","last_updated":"2025-11-06T00:00:00Z","layout_version":"1.0","sections":{"policy_summary":"","inflation_growth":"","political_fiscal":"","positioning_overview":[],"trading_implications":{"scenarios":[]},"summary_table":[],"tactical_notes":[]}}
+]
